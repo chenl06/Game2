@@ -3,7 +3,7 @@
 	"vertexformat":"PosNormTex",
 	"shader":"BasicMesh",
 	"textures":[
-		"Assets/Stonewall.bmp"
+		"Assets/Plane.png"
 	],
 	"specularPower":100.0,
 	"vertices":[

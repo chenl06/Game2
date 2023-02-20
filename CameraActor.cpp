@@ -38,11 +38,11 @@ void CameraActor::ActorInput(const uint8_t* keys)
 	// wasd movement
 	if (keys[SDL_SCANCODE_W])
 	{
-		forwardSpeed += 1200.0f;
+		forwardSpeed += 300.0f;
 	}
 	if (keys[SDL_SCANCODE_S])
 	{
-		forwardSpeed -= 1200.0f;
+		forwardSpeed -= 300.0f;
 	}
 	if (keys[SDL_SCANCODE_A])
 	{

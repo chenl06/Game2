@@ -12,7 +12,6 @@
 #include <string>
 #include <vector>
 #include "Math.h"
-#include "Maze.h"
 
 class Game
 {
@@ -26,7 +25,6 @@ public:
 	void RemoveActor(class Actor* actor);
 
 	class Renderer* GetRenderer() { return mRenderer; }
-
 private:
 	void ProcessInput();
 	void UpdateGame();
@@ -40,12 +38,6 @@ private:
 	std::vector<class Actor*> mPendingActors;
 
 	class Renderer* mRenderer;
-
-	// maze pointer
-	class Maze* myMaze;
-
-	// Skybox pointer
-	class SkyBox* mySkyBox;
 
 	Uint32 mTicksCount;
 	bool mIsRunning;

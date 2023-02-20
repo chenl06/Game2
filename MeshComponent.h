@@ -20,11 +20,7 @@ public:
 	// Set the mesh/texture index used by mesh component
 	virtual void SetMesh(class Mesh* mesh) { mMesh = mesh; }
 	void SetTextureIndex(size_t index) { mTextureIndex = index; }
-	void SetUsesLighting(bool value) { usesLighting_ = value; } //WSB 2019-3-29
-														//lets you turn off lighting for skybox
-
 protected:
 	class Mesh* mMesh;
 	size_t mTextureIndex;
-	bool usesLighting_ = true; //WSB 2019-3-29
 };

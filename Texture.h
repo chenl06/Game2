@@ -1,4 +1,3 @@
-#pragma once
 // ----------------------------------------------------------------
 // From Game Programming in C++ by Sanjay Madhav
 // Copyright (C) 2017 Sanjay Madhav. All rights reserved.
@@ -17,7 +16,6 @@ public:
 	
 	bool Load(const std::string& fileName);
 	void Unload();
-	void CreateFromSurface(struct SDL_Surface* surface);
 	
 	void SetActive();
 	

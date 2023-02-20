@@ -1,0 +1,30 @@
+{
+
+	"version":1,
+	
+	"vertexformat":"PosNormTex",
+
+	"shader":"BasicMesh",
+
+	"textures":[
+		"Assets/billboard.png"
+	],
+
+	"specularPower":100.0,
+  
+	"vertices":[
+
+		[-0.5,-0.5,-0.5,0,0,-1,0,0],
+
+		[0.5,-0.5,-0.5,0,0,-1,1,0],
+
+		[-0.5,0.5,-0.5,0,0,-1,0,-1],
+		[0.5,0.5,-0.5,0,0,-1,1,-1]
+	],
+
+	"indices":[
+		[2,1,0],
+		[3,2,1]
+	]
+
+}

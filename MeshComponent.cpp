@@ -46,15 +46,7 @@ void MeshComponent::Draw(Shader* shader)
 		// Set the mesh's vertex array as active
 		VertexArray* va = mMesh->GetVertexArray();
 		va->SetActive();
-
 		// Draw
-		if (!usesLighting_) //WSB 2019-3-29:  says "Light is bright; no directionality"
-							//used by sky box
-		{
-			shader->SetVectorUniform("uAmbientLight", Vector3(1.0f, 1.0f, 1.0f));
-			shader->SetVectorUniform("uDirLight.mDiffuseColor", Vector3::Zero);
-			shader->SetVectorUniform("uDirLight.mSpecColor",    Vector3::Zero);
-		}
 		glDrawElements(GL_TRIANGLES, va->GetNumIndices(), GL_UNSIGNED_INT, nullptr);
 	}
 }

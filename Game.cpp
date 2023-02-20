@@ -13,10 +13,8 @@
 #include "SpriteComponent.h"
 #include "MeshComponent.h"
 #include "CameraActor.h"
-#include "PlaneActor.h"
-#include "Maze.h"
-#include "Room.h"
-#include "SkyBox.h"
+#include "Floor.h"
+#include "Wall.h"
 
 Game::Game()
 :mRenderer(nullptr)
@@ -33,9 +31,6 @@ bool Game::Initialize()
 		SDL_Log("Unable to initialize SDL: %s", SDL_GetError());
 		return false;
 	}
-
-	// create the maze
-	myMaze = new Maze(1, 1);
 
 	// Create the renderer
 	mRenderer = new Renderer(this);
@@ -105,15 +100,10 @@ void Game::UpdateGame()
 
 	// Update all actors
 	mUpdatingActors = true;
-
-	// match Skybox's position to the camera's
-	mySkyBox->SetPosition(mCameraActor->GetPosition());
-
 	for (auto actor : mActors)
 	{
 		actor->Update(deltaTime);
 	}
-
 	mUpdatingActors = false;
 
 	// Move any pending actors to mActors
@@ -156,7 +146,7 @@ void Game::LoadData()
 	q = Quaternion::Concatenate(q, Quaternion(Vector3::UnitZ, Math::Pi + Math::Pi / 4.0f));
 	a->SetRotation(q);
 	MeshComponent* mc = new MeshComponent(a);
-	mc->SetMesh(mRenderer->GetMesh("Assets/ReverseCube.gpmesh"));
+	mc->SetMesh(mRenderer->GetMesh("Assets/Cube.gpmesh"));
 
 	a = new Actor(this);
 	a->SetPosition(Vector3(200.0f, -75.0f, 0.0f));
@@ -164,17 +154,52 @@ void Game::LoadData()
 	mc = new MeshComponent(a);
 	mc->SetMesh(mRenderer->GetMesh("Assets/Sphere.gpmesh"));
 
-	//// set up maze
-	for (int i = 0; i < myMaze->NRows; i++)
+	//Chen Luo
+	//Creating a billboard
+	a = new Actor(this);
+	a->SetPosition(Vector3(200.0f, -275.0f, 0.0f));
+	a->SetScale(100.0f);
+	mc = new MeshComponent(a);
+	mc->SetMesh(mRenderer->GetMesh("Assets/billboard.gpmesh"));
+
+	// Setup floor
+	const float start = -1250.0f;
+	const float size = 250.0f;
+	for (int i = 0; i < 10; i++)
 	{
-		for (int j = 0; j < myMaze->NColumns; j++)
-	      a = new Room(this, myMaze->maze[i][j]);
+		for (int j = 0; j < 10; j++)
+		{
+			a = new Floor(this);//Chen Luo
+			a->SetPosition(Vector3(start + i * size, start + j * size, -100.0f));
+		}
 	}
 
-	//create skybox
-	mySkyBox = new SkyBox(this);
+	// Left/right walls
+	q = Quaternion(Vector3::UnitX, Math::PiOver2);
+	for (int i = 0; i < 10; i++)
+	{
+		a = new Wall(this); //Chen Luo
+		a->SetPosition(Vector3(start + i * size, start - size, 300.0f));//Chen Luo
+		a->SetRotation(q);
+		
+		a = new Wall(this);//Chen Luo
+		a->SetPosition(Vector3(start + i * size, -start + size, 300.0f));//Chen Luo
+		a->SetRotation(q);
+	}
 
-	
+	q = Quaternion::Concatenate(q, Quaternion(Vector3::UnitZ, Math::PiOver2));
+	// Forward/back walls
+	for (int i = 0; i < 10; i++)
+	{
+		a = new Wall(this);//Chen Luo
+		a->SetPosition(Vector3(start - size, start + i * size, 300.0f));//Chen Luo
+		a->SetRotation(q);
+
+		a = new Wall(this);//Chen Luo
+		a->SetPosition(Vector3(-start + size, start + i * size, 300.0f));//Chen Luo
+		a->SetRotation(q);
+	}
+
 	// Setup lights
 	mRenderer->SetAmbientLight(Vector3(0.2f, 0.2f, 0.2f));
 	DirectionalLight& dir = mRenderer->GetDirectionalLight();

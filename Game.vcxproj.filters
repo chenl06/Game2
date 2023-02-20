@@ -37,6 +37,9 @@
     <ClCompile Include="Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="VertexArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -52,22 +55,10 @@
     <ClCompile Include="CameraActor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PlaneActor.cpp">
+    <ClCompile Include="Wall.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Room.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Box.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Maze.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SkyBox.cpp">
+    <ClCompile Include="Floor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -114,19 +105,10 @@
     <ClInclude Include="CameraActor.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="PlaneActor.h">
+    <ClInclude Include="Wall.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Box.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Room.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Maze.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SkyBox.h">
+    <ClInclude Include="Floor.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

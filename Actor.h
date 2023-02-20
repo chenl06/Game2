@@ -43,7 +43,7 @@ public:
 	void SetScale(float scale) { mScale = scale;  mRecomputeWorldTransform = true; }
 	const Quaternion& GetRotation() const { return mRotation; }
 	void SetRotation(const Quaternion& rotation) { mRotation = rotation;  mRecomputeWorldTransform = true; }
-
+	
 	void ComputeWorldTransform();
 	const Matrix4& GetWorldTransform() const { return mWorldTransform; }
 
