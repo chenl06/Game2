@@ -15,6 +15,7 @@
 #include "CameraActor.h"
 #include "Floor.h"
 #include "Wall.h"
+#include "Sphere.h"
 
 Game::Game()
 :mRenderer(nullptr)
@@ -98,6 +99,8 @@ void Game::UpdateGame()
 	}
 	mTicksCount = SDL_GetTicks();
 
+	
+
 	// Update all actors
 	mUpdatingActors = true;
 	for (auto actor : mActors)
@@ -148,21 +151,19 @@ void Game::LoadData()
 	MeshComponent* mc = new MeshComponent(a);
 	mc->SetMesh(mRenderer->GetMesh("Assets/Cube.gpmesh"));
 
-	a = new Actor(this);
-	a->SetPosition(Vector3(200.0f, -75.0f, 0.0f));
-	a->SetScale(3.0f);
-	mc = new MeshComponent(a);
-	mc->SetMesh(mRenderer->GetMesh("Assets/Sphere.gpmesh"));
+	//New Sphere Class
+	a = new Sphere(this);
 
 	//Chen Luo
 	//Creating a billboard
 	a = new Actor(this);
 	a->SetPosition(Vector3(200.0f, -275.0f, 0.0f));
 	a->SetScale(100.0f);
+	a->SetRotation(q);
 	mc = new MeshComponent(a);
 	mc->SetMesh(mRenderer->GetMesh("Assets/billboard.gpmesh"));
 
-	// Setup floor
+	// Setup floor and new Floor class
 	const float start = -1250.0f;
 	const float size = 250.0f;
 	for (int i = 0; i < 10; i++)
@@ -175,6 +176,7 @@ void Game::LoadData()
 	}
 
 	// Left/right walls
+	// New wall class
 	q = Quaternion(Vector3::UnitX, Math::PiOver2);
 	for (int i = 0; i < 10; i++)
 	{
@@ -201,7 +203,7 @@ void Game::LoadData()
 	}
 
 	// Setup lights
-	mRenderer->SetAmbientLight(Vector3(0.2f, 0.2f, 0.2f));
+	mRenderer->SetAmbientLight(Vector3(0.5f, 0.5f, 0.5f));
 	DirectionalLight& dir = mRenderer->GetDirectionalLight();
 	dir.mDirection = Vector3(0.0f, -0.707f, -0.707f);
 	dir.mDiffuseColor = Vector3(0.78f, 0.88f, 1.0f);
