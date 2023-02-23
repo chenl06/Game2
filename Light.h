@@ -8,5 +8,7 @@ class Light : public Actor
 {
 public:
 	Light(class Game* game);
-	//void UpdateActor(float deltaTime) override;
+	void UpdateActor(float deltaTime) override;
+private:
+	float mLightTime;
 };
